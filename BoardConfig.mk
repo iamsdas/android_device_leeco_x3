@@ -71,12 +71,12 @@ BOARD_MKBOOTIMG_ARGS := \
 	--ramdisk_offset 0x03f88000 \
 	--second_offset 0x00e88000 \
 	--tags_offset 0x0df88000 \
-	--board WisniaPL
+	--board mt6795
 #prebuilt
 TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/prebuilt/kernel
 #source
-TARGET_KERNEL_SOURCE := kernel/LeTV/x500
-TARGET_KERNEL_CONFIG := x500_defconfig
+TARGET_KERNEL_SOURCE := kernel/LeEco/X3
+TARGET_KERNEL_CONFIG := Turbo-X3_defconfig
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 
@@ -195,20 +195,13 @@ RECOVERY_SDCARD_ON_DATA := true
 TW_NO_USB_STORAGE := true
 TW_INTERNAL_STORAGE_PATH := "/data/media"
 TW_INTERNAL_STORAGE_MOUNT_POINT := "data"
-
-else
-# CWM
-BOARD_RECOVERY_SWIPE := true
-BOARD_SUPPRESS_EMMC_WIPE := true
-BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
-TARGET_RECOVERY_PIXEL_FORMAT := "RGBA_8888"
 endif
 
 # system.prop
 TARGET_SYSTEM_PROP := $(LOCAL_PATH)/system.prop
 
 # SELinux
-BOARD_SEPOLICY_DIRS := \
+BOARD_SEPOLICY_DIRS += \
     device/LeEco/X3/sepolicy
 
 # Seccomp Filter
@@ -238,11 +231,6 @@ TARGET_BOOTANIMATION_HALF_RES := true
 MALLOC_SVELTE := true
 BOARD_GLOBAL_CFLAGS += -DDECAY_TIME_DEFAULT=0
 #BOARD_GLOBAL_CFLAGS += -DBATTERY_REAL_INFO
-#Hack for prebuilt kernel
-ifeq ($(TARGET_DEVICE),X3)
-$(shell mkdir -p $(OUT)/obj/KERNEL_OBJ/usr)
-$(shell touch $(OUT)/obj/KERNEL_OBJ/usr/export_includes)
-endif
 
 # Google properties overides
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -254,5 +242,4 @@ ro.com.android.wifi-watchlist=GoogleGuest \
 ro.error.receiver.system.apps=com.google.android.gms \
 ro.setupwizard.enterprise_mode=1 \
 ro.com.android.dataroaming=false \
-net.tethering.noprovisioning=true \
 ro.setupwizard.rotation_locked=true
