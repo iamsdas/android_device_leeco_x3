@@ -189,6 +189,10 @@ on post-fs-data
     mkdir /data/gps_mnl 0771 gps system
     mkdir /data/misc/gps 0770 gps system
 
+    # DT2W Gesture
+    chmod 0660 /sys/devices/bus.2/11009000.I2C2/i2c-2/2-004b/input/input4/wake_gesture
+    chown system system /sys/devices/bus.2/11009000.I2C2/i2c-2/2-004b/input/input4/wake_gesture
+
 # -----------------------
 # Add by MTK
     # md32 boot
