@@ -20,7 +20,7 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- Minimum screen brightness setting allowed by the power manager.
          The user is forbidden from setting the brightness below this level. -->
-    <integer name="config_screenBrightnessSettingMinimum">10</integer>
+    <integer name="config_screenBrightnessSettingMinimum">5</integer>
 
     <!-- Screen brightness used to dim the screen when the user activity
         timeout expires.  May be less than the minimum allowed brightness setting
@@ -226,4 +226,9 @@
          Must be overridden in platform specific overlays -->
 
  <bool name="config_enableWifiDisplay">true</bool>
+
+    <!-- Screen brightness used to dim the screen while dozing in a very low power state.
+         May be less than the minimum allowed brightness setting
+that can be set by the user. -->
+    <integer name="config_screenBrightnessDoze">25</integer>
 </resources>
