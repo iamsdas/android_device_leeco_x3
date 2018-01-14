@@ -38,7 +38,8 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    Snap
+    Snap \
+    Camera2
 
 # Charger
 PRODUCT_PACKAGES += \
@@ -66,8 +67,7 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.dalvik.vm.native.bridge=0 \
     persist.sys.usb.config=mtp \
     persist.debug.xlog.enable=0 \
-    camera.disable_zsl_mode=1 \
-    persist.sys.timezone=Europe/Warsaw
+    camera.disable_zsl_mode=1
 
 # PRODUCT_PROPERTY_OVERRIDES
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -137,7 +137,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ramdisk/init.project.rc:root/init.project.rc \
     $(LOCAL_PATH)/ramdisk/ueventd.mt6795.rc:root/ueventd.mt6795.rc \
     $(LOCAL_PATH)/ramdisk/init.mal.rc:root/init.mal.rc \
-    $(LOCAL_PATH)/ramdisk/init.usb.configfs:root/init.usb.configfs.rc \
+    $(LOCAL_PATH)/ramdisk/init.usb.configfs.rc:root/init.usb.configfs.rc \
     $(LOCAL_PATH)/ramdisk/init.trustonic.rc:root/init.trustonic.rc \
 
 
@@ -249,7 +249,7 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/slp_conf:system/etc/slp_conf \
-	$(LOCAL_PATH)/configs/gps/gps.conf:system/etc/gps.conf \ 
+    $(LOCAL_PATH)/configs/gps/gps.conf:system/etc/gps.conf \
     $(LOCAL_PATH)/configs/clatd.conf:system/etc/clatd.conf \
     $(LOCAL_PATH)/configs/custom.conf:system/etc/custom.conf \
     $(LOCAL_PATH)/configs/mtklog-config.prop:system/etc/mtklog-config.prop \
@@ -303,8 +303,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     EngineerMode  \
     libm4u  \
-    libbwc  \
-ResurrectionOTA 
+    libbwc
 
 # Include explicitly to work around Facelock issues
 PRODUCT_PACKAGES += libprotobuf-cpp-full
