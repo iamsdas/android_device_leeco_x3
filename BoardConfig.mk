@@ -216,3 +216,6 @@ ro.setupwizard.enterprise_mode=1 \
 ro.com.android.dataroaming=false \
 net.tethering.noprovisioning=true \
 ro.setupwizard.rotation_locked=true
+
+# SenserHal
+TARGET_SENSORS_DEVICE_API_VERSION := SENSORS_DEVICE_API_VERSION_1_1
