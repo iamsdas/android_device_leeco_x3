@@ -544,7 +544,7 @@
 /system/bin/goodixfingerprintd u:object_r:goodixfingerprintd_exec:s0
 /data/system/fingerprint(/.*)?    u:object_r:goodixfingerprintd_data_file:s0
 /persist/data/gxfp(/.*)?		  u:object_r:goodixfingerprintd_data_file:s0
-/dev/ttyACM[0-9]* u:object_r:goodixfingerprintd_device:s0 
+/dev/ttyACM[0-9]* u:object_r:goodixfingerprintd_device:s0
 
 # Mobicore files
 /system/lib64/libMcClient.so  u:object_r:mobicore_lib_file:s0
@@ -574,3 +574,6 @@
 /sys/devices/virtual/BOOT/BOOT/boot/boot_mode                   u:object_r:sysfs_boot_mode:s0
 /sys/bus/platform/drivers/mem_bw_ctrl/concurrency_scenario      u:object_r:sysfs_membw:s0
 /sys/bus/platform/drivers/ddr_type/ddr_type                     u:object_r:sysfs_ddr_type:s0
+
+# USB Gadget
+/dev/hidg(.*)                        u:object_r:hid_gadget_device:s0

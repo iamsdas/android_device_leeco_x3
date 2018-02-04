@@ -72,4 +72,3 @@ allow mnld rootfs:lnk_file { getattr };
 
 # boot_mode 
 allow mnld sysfs_boot_mode:file r_file_perms;
-

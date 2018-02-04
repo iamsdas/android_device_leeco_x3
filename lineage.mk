@@ -1,30 +1,37 @@
+LOCAL_PATH := device/LeEco/X3
+
+# Inherit from those products. Most specific first.
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
+
 # Inherit device configuration
 $(call inherit-product, $(LOCAL_PATH)/device.mk)
 
-# Inherit some common CM stuff.
+# Inherit some common Lineage stuff.
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
+
+# Release name
+PRODUCT_RELEASE_NAME := X3
 
 # Device display
 TARGET_SCREEN_HEIGHT := 1920
 TARGET_SCREEN_WIDTH := 1080
 
 ## Device identifier. This must come after all inclusions
-PRODUCT_DEVICE := X3
 PRODUCT_NAME := lineage_X3
+PRODUCT_DEVICE := X3
 PRODUCT_BRAND := LeEco
+PRODUCT_MODEL := Le1s
 PRODUCT_MANUFACTURER := LeEco
-PRODUCT_RELEASE_NAME := X3
 PRODUCT_RESTRICT_VENDOR_FILES := false
-PRODUCT_MODEL := Le 1S
 
 # SDcard
 PRODUCT_CHARACTERISTICS := nosdcard
 
+# Google client ID property.
+PRODUCT_GMS_CLIENTID_BASE := android-LeEco
+
+# Build fingerprint from Indian variant.
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    BUILD_FINGERPRINT=Letv/Le1s_CN/X3:6.0/DBXCNOP5902302082S/1486532099:user/release-keys 
-
-
-
-
-
-
+	BUILD_FINGERPRINT=Letv/Le1s_IN/X3_HK:6.0/DHXOSOP5801911241S/1479990092:user/release-keys \
+	PRIVATE_BUILD_DESC="full_x500-user 6.0 DHXOSOP5801911241S 1479990092 release-keys"

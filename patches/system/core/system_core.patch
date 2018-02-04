@@ -19,9 +19,9 @@ index 915d159a5..0666e4d63 100644
 -    disabled
 +    #disabled
      seclabel u:r:adbd:s0
- 
+
  # adbd on at boot in emulator
--- 
+--
 2.11.0
 
 diff --git a/liblog/logger_write.c b/liblog/logger_write.c
@@ -36,5 +36,3 @@ index c7b5a84..6184e04 100644
          !strcmp(tag, "STK") ||
          !strcmp(tag, "CDMA") ||
          !strcmp(tag, "PHONE") ||
-
-
