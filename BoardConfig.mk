@@ -206,6 +206,7 @@ TARGET_HAS_LEGACY_LP_CAM := true
 TARGET_CAMERASERVICE_CLOSES_NATIVE_HANDLES := true
 TARGET_CAMERA_APP := Snap
 TARGET_SPECIFIC_CAMERA_PARAMETER_LIBRARY := libcamera_parameters_mtk
+TARGET_USES_NON_TREBLE_CAMERA := true
 
 # Charger
 BACKLIGHT_PATH := /sys/class/leds/lcd-backlight/brightness
