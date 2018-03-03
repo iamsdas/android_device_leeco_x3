@@ -24,7 +24,8 @@ TARGET_OTA_ASSERT_DEVICE := x3,X500,X507,X509,X3,x500,x507,x509,X502,x502
 # Power
 PRODUCT_PACKAGES += \
 	power.default \
-	power.mt6795
+	power.mt6795 \
+	vendor.lineage.power@1.0-impl
 
 # Camera
 PRODUCT_PACKAGES += \
@@ -94,6 +95,7 @@ PRODUCT_PACKAGES += \
 	libwpa_client \
 	hostapd \
 	wpa_supplicant \
+	wifilogd \
         wificond
 
 # Media
