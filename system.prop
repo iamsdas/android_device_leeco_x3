@@ -224,3 +224,6 @@ video.accelerate.hw=1
 debug.performance.tuning=1
 debug.sf.hw=1
 persist.sys.ui.hw=1
+# Media
+persist.media.treble_omx=false
+
