@@ -234,3 +234,6 @@ ro.setupwizard.rotation_locked=true
 
 # SenserHal
 TARGET_SENSORS_DEVICE_API_VERSION := SENSORS_DEVICE_API_VERSION_1_1
+
+#Treble support 
+PRODUCT_FULL_TREBLE := false
