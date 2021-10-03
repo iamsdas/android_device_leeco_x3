@@ -57,6 +57,8 @@ BOARD_GLOBAL_CFLAGS += -DDISABLE_ASHMEM_TRACKING
 BOARD_GLOBAL_CFLAGS += -DCAMERA_VENDOR_L_COMPAT
 BOARD_GLOBAL_CFLAGS += -DDECAY_TIME_DEFAULT=0
 BOARD_DISABLE_HW_ID_MATCH_CHECK := true
+SUPPRESS_MTK_AUDIO_BLOB_ERR_MSG := true
+TARGET_HAS_EARLYSUSPEND := true
 
 # Kernel
 TARGET_USES_64_BIT_BINDER := true
@@ -76,6 +78,8 @@ TARGET_KERNEL_SOURCE := kernel/LeEco/X3
 TARGET_KERNEL_CONFIG := x500_defconfig
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
+LZMA_RAMDISK_TARGETS := boot,recovery
+BOARD_USES_FULL_RECOVERY_IMAGE := true
 
 # build old-style zip files (required for ota updater)
 BLOCK_BASED_OTA := false
@@ -92,6 +96,10 @@ BOARD_EGL_WORKAROUND_BUG_10194508 := true
 BOARD_EGL_NEEDS_HANDLE_VALUE := true
 MTK_HWC_SUPPORT := yes
 MTK_HWC_VERSION := 1.4.1
+NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
+
+#Software gatekeeper
+BOARD_USE_SOFT_GATEKEEPER := true
 
 # LightHAL
 TARGET_PROVIDES_LIBLIGHT := true
@@ -166,7 +174,11 @@ BOARD_FLASH_BLOCK_SIZE := 4096
 LZMA_RAMDISK_TARGETS += recovery
 
 # Recovery
-TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/ramdisk/recovery.fstab
+ifeq ($(WITH_TWRP),true)
+TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/ramdisk/twrp.fstab
+else
+TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/ramdisk/fstab.mt6795
+endif
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun/file
 
 BOARD_HAS_NO_SELECT_BUTTON := true
@@ -183,9 +195,6 @@ TARGET_SYSTEM_PROP := $(LOCAL_PATH)/system.prop
 # SELinux
 BOARD_SEPOLICY_DIRS += device/LeEco/X3/sepolicy
 
-# Seccomp Filter
-BOARD_SECCOMP_POLICY := $(LOCAL_PATH)/seccomp
-
 # Legacy blobs
 TARGET_NEEDS_TEXT_RELOCATIONS := true
 
@@ -195,8 +204,8 @@ USE_DEVICE_SPECIFIC_CAMERA := true
 BOARD_USES_MTK_MEDIA_PROFILES:= true
 TARGET_HAS_LEGACY_LP_CAM := true
 TARGET_CAMERASERVICE_CLOSES_NATIVE_HANDLES := true
-USE_CAMERA_STUB := true
 TARGET_CAMERA_APP := Snap
+TARGET_USES_NON_TREBLE_CAMERA := true
 
 # Charger
 BACKLIGHT_PATH := /sys/class/leds/lcd-backlight/brightness
@@ -219,3 +228,9 @@ ro.setupwizard.enterprise_mode=1 \
 ro.com.android.dataroaming=false \
 net.tethering.noprovisioning=true \
 ro.setupwizard.rotation_locked=true
+
+# SenserHal
+TARGET_SENSORS_DEVICE_API_VERSION := SENSORS_DEVICE_API_VERSION_1_1
+
+#Treble support 
+PRODUCT_FULL_TREBLE := false

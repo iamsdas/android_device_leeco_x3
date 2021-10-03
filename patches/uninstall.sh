@@ -1,19 +1,18 @@
+#!/bin/sh
+
 echo $1
 rootdirectory="$PWD"
 # ---------------------------------
 
-dirs="bionic frameworks/av frameworks/base system/core system/netd"
+dirs="bionic build/make/core build/soong frameworks/av frameworks/base hardware/interfaces system/core vendor/lineage"
 
 for dir in $dirs ; do
 	cd $rootdirectory
 	cd $dir
-	echo "Reverting $dir patches..."
-	#git apply --reverse $rootdirectory/device/leeco/x3/patches/$dir/*.patch
-	git reset --hard
-	git clean -f -d
-	echo " "
+	echo -e "\n Cleaning $dir patches...\n"
+	git checkout -- . && git clean -df
 done
 
 # -----------------------------------
-echo "Changing to build directory..."
+echo -e "Done !\n"
 cd $rootdirectory
